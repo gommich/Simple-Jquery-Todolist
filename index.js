@@ -44,8 +44,7 @@ app.put('/deletetodo', async (req,res)=>{
   try{
     const client = await pool.connect()
     var result = await client.query(`DELETE FROM todo where item = '${item}'`);
-
-
+    res.send(JSON.stringify({ message: "delete completed" }));
 
     client.release();
     } catch (err) {
@@ -62,6 +61,7 @@ app.put('/updatetodo', async (req,res)=>{
     const client = await pool.connect()
     var result = await client.query(`UPDATE todo SET item='${newitem}' where item='${olditem}'`);
 
+    res.send(JSON.stringify({ message: "update completed" }));
 
 
     client.release();
@@ -77,7 +77,7 @@ app.put('/update-status-to-completed', async (req,res)=>{
   try{
     const client = await pool.connect()
     var result = await client.query(`UPDATE todo SET status='completed' where item='${item}'`);
-
+    res.send(JSON.stringify({ message: "update completed" }));
 
 
     client.release();
@@ -93,8 +93,8 @@ app.put('/update-status-to-active', async (req,res)=>{
   try{
     const client = await pool.connect()
     var result = await client.query(`UPDATE todo SET status='active' where item='${item}'`);
+    res.send(JSON.stringify({ message: "update completed" }));
 
-    
 
     client.release();
     } catch (err) {
@@ -114,6 +114,7 @@ app.get('/db', async (req,res)=>{
     }else{
       res.send(result.rows);
     }
+
     client.release();
   } catch (err) {
     console.error(err)
@@ -124,4 +125,4 @@ app.get('/db', async (req,res)=>{
 // Serve html, css and js at root
 app.get('/', (req, res) =>{
   res.sendFile( path.join( __dirname, 'client', 'index.html' ))
-}).listen(PORT, () => console.log('Listeningon'))
+}).listen(PORT, () => console.log('Listening on',PORT))

@@ -23,7 +23,11 @@ $(document).ready(function(e) {
           $('#completed-list').prepend($newTask);
         }
     })
-  }
+  },
+  error: function(xhr, status, error){
+         var errorMessage = xhr.status + ': ' + xhr.statusText
+         alert('Error - ' + errorMessage);
+     }
 });
 
 
@@ -59,8 +63,12 @@ $(document).ready(function(e) {
               data: JSON.stringify(data),
               contentType: 'application/json',
               success: function (data) {
-                console.log(data);
+                console.log("SUCCESSFUL");
               },
+              error: function(xhr, status, error){
+                var errorMessage = xhr.status + ': ' + xhr.statusText
+                alert('Error - ' + errorMessage);
+              }
             });
 
             $(this).dialog('close');
@@ -86,8 +94,12 @@ $(document).ready(function(e) {
       data: JSON.stringify({item:item_val}),
       contentType: 'application/json',
       success: function (data) {
-        console.log(data);
+        console.log("SUCCESSFUL");
       },
+      error: function(xhr, status, error){
+         var errorMessage = xhr.status + ': ' + xhr.statusText
+         alert('Error - ' + errorMessage);
+     }
     });
   });
 
@@ -105,7 +117,7 @@ $(document).ready(function(e) {
           data: JSON.stringify({item:item_val}),
           contentType: 'application/json',
           success: function (data) {
-            console.log(data);
+            console.log("SUCCESSFUL");
           },
         });
       }else{
@@ -116,8 +128,12 @@ $(document).ready(function(e) {
           data: JSON.stringify({item:item_val}),
           contentType: 'application/json',
           success: function (data) {
-            console.log(data);
+            console.log("SUCCESSFUL");
           },
+          error: function(xhr, status, error){
+            var errorMessage = xhr.status + ': ' + xhr.statusText
+            alert('Error - ' + errorMessage);
+          }
         });
       }
     }
@@ -144,8 +160,12 @@ $(document).ready(function(e) {
           data: JSON.stringify({item:item_val}),
           contentType: 'application/json',
           success: function (data) {
-            console.log(data);
+            console.log("SUCCESSFUL");
           },
+          error: function(xhr, status, error){
+            var errorMessage = xhr.status + ': ' + xhr.statusText
+            alert('Error - ' + errorMessage);
+          }
         });
         $(this).dialog('close');
       },
@@ -180,8 +200,12 @@ $(document).ready(function(e) {
           data: JSON.stringify({olditem: old_text, newitem: new_text}),
           contentType: 'application/json',
           success: function (data) {
-            console.log(data);
+            console.log("SUCCESSFUL");
           },
+          error: function(xhr, status, error){
+            var errorMessage = xhr.status + ': ' + xhr.statusText
+            alert('Error - ' + errorMessage);
+          }
         });
 
         $(this).dialog('close');
