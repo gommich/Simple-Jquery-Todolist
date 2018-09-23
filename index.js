@@ -29,7 +29,7 @@ app.post('/addtodo', async (req,res)=>{
     currID=result.rows[0].id
     //Send ID back to front end
     res.setHeader('Content-Type', 'application/json');
-    res.send(JSON.stringify({ a: currID }));
+    res.send(result.command+" "+item+" "+status+"\n");
 
     client.release();
     } catch (err) {
@@ -44,7 +44,7 @@ app.put('/deletetodo', async (req,res)=>{
   try{
     const client = await pool.connect()
     var result = await client.query(`DELETE FROM todo where item = '${item}'`);
-    res.send(JSON.stringify({ message: "delete completed" }));
+    res.send(result.command+" "+item+"\n");
 
     client.release();
     } catch (err) {
@@ -61,7 +61,7 @@ app.put('/updatetodo', async (req,res)=>{
     const client = await pool.connect()
     var result = await client.query(`UPDATE todo SET item='${newitem}' where item='${olditem}'`);
 
-    res.send(JSON.stringify({ message: "update completed" }));
+    res.send(result.command+" "+olditem+" "+newitem+"\n");
 
 
     client.release();
@@ -77,7 +77,7 @@ app.put('/update-status-to-completed', async (req,res)=>{
   try{
     const client = await pool.connect()
     var result = await client.query(`UPDATE todo SET status='completed' where item='${item}'`);
-    res.send(JSON.stringify({ message: "update completed" }));
+    res.send(result.command+" "+item+" "+"completed\n");
 
 
     client.release();
@@ -93,7 +93,7 @@ app.put('/update-status-to-active', async (req,res)=>{
   try{
     const client = await pool.connect()
     var result = await client.query(`UPDATE todo SET status='active' where item='${item}'`);
-    res.send(JSON.stringify({ message: "update completed" }));
+    res.send(result.command+" "+item+" "+"active\n");
 
 
     client.release();

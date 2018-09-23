@@ -26,7 +26,7 @@ $(document).ready(function(e) {
   },
   error: function(xhr, status, error){
          var errorMessage = xhr.status + ': ' + xhr.statusText
-         alert('Error - ' + errorMessage);
+         console.log('Error - ' + errorMessage);
      }
 });
 
@@ -67,7 +67,7 @@ $(document).ready(function(e) {
               },
               error: function(xhr, status, error){
                 var errorMessage = xhr.status + ': ' + xhr.statusText
-                alert('Error - ' + errorMessage);
+                console.log('Error - ' + errorMessage);
               }
             });
 
@@ -98,7 +98,7 @@ $(document).ready(function(e) {
       },
       error: function(xhr, status, error){
          var errorMessage = xhr.status + ': ' + xhr.statusText
-         alert('Error - ' + errorMessage);
+         console.log('Error - ' + errorMessage);
      }
     });
   });
@@ -132,7 +132,7 @@ $(document).ready(function(e) {
           },
           error: function(xhr, status, error){
             var errorMessage = xhr.status + ': ' + xhr.statusText
-            alert('Error - ' + errorMessage);
+            console.log('Error - ' + errorMessage);
           }
         });
       }
@@ -164,7 +164,7 @@ $(document).ready(function(e) {
           },
           error: function(xhr, status, error){
             var errorMessage = xhr.status + ': ' + xhr.statusText
-            alert('Error - ' + errorMessage);
+            console.log('Error - ' + errorMessage);
           }
         });
         $(this).dialog('close');
@@ -204,7 +204,7 @@ $(document).ready(function(e) {
           },
           error: function(xhr, status, error){
             var errorMessage = xhr.status + ': ' + xhr.statusText
-            alert('Error - ' + errorMessage);
+            console.log('Error - ' + errorMessage);
           }
         });
 
